@@ -1,0 +1,37 @@
+Input
+    Get number of rows
+    Ensure number of rows is within range ( rows < 10)
+    Label each row as “A”, “B”, “C”... depending on how many rows have been inputted
+    Get number of positions
+    Ensure number of positions entered is within range (positions < 8)
+    Label each position as 1, 2, 3… depending on how many positions have been inputted
+
+Menu
+    Get input - options A, R, P and X (A, R AND P each must be in their own methods)
+    If input == A
+    Get letter of the row you want to add the musician to
+    Ensure input is within range of rows
+    Get position in the row you want to add the musician to
+    Ensure input is within range of positions
+    Get weight of musician being added
+    Ensure weight of position won't exceed 100kg
+    Calculate total weight of the row
+    Calculate average weight of the row
+    System.out. println(“*******Musician added.”)
+    If input == R
+    Get row letter you want to add musician to
+    Ensure input is within range of rows
+    Get position in row you want to remove musician from
+    Ensure input is within range of positions
+    System.out.println(“*******Musician removed.”)
+    If input == P
+    Print rows, positions (if any), total weight and average weight
+
+    If input == X
+    End program
+
+Exit
+    Finish program
+
+
+

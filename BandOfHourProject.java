@@ -55,12 +55,13 @@ public class BandOfHourProject {
             double musicianWeight;
             double totalWeightInRow = 0;
 
-            System.out.println("Please enter a row letter     : ");
+
+            System.out.print("Please enter a row letter     : ");
             rowLetter = (keyboard.next().toUpperCase().charAt(0));
             rowIndex = rowLetter - 'A';
 
-            while (rowIndex >= userRows || userRows <= 0) {
-                System.out.println("ERROR: Out of range, try again   :");
+            while (rowIndex < 0|| rowIndex >= userRows ) {
+                System.out.print("ERROR: Out of range, try again   :");
                 rowLetter = (keyboard.next().toUpperCase().charAt(0));
                 rowIndex = rowLetter - 'A';
             }
@@ -68,11 +69,12 @@ public class BandOfHourProject {
             System.out.print("Please enter position number (1 to " + numPositions[rowIndex] + ") : ");
             int position = keyboard.nextInt();
 
-            while (position >= numPositions[rowIndex]) {
+            while (position < 1 || position > numPositions[rowIndex]) {
                 System.out.print("ERROR: Out of range, try again   : ");
+                position = keyboard.nextInt();
             }
 
-            System.out.print("Please enter weight (" + MIN_WEIGHT + "to " + MAX_WEIGHT + ")   : ");
+            System.out.print("Please enter weight (" + MIN_WEIGHT + " to " + MAX_WEIGHT + ")   : ");
             musicianWeight = keyboard.nextDouble();
 
             while (musicianWeight < MIN_WEIGHT || musicianWeight > MAX_WEIGHT) {
@@ -107,49 +109,39 @@ public class BandOfHourProject {
                 rowLetter = (keyboard.next().toUpperCase().charAt(0));
                 rowIndex = rowLetter -'A';
             }
-            System.out.println("Please enter position number (1 to" + numPositions[rowIndex] + ") : ");
+            System.out.println("Please enter position number (1 to " + numPositions[rowIndex] + ") : ");
             int position = keyboard.nextInt();
 
-            while (position >= MAX_NUM_POSITIONS){
+            while (position < 1 || position > numPositions[rowIndex]){
                 System.out.println("ERROR: Out of range, try again   : ");
                 position = keyboard.nextInt();
             }
-
-            System.out.println("Please enter weight (45.0 to 200.0)   : ");
-            double musicianWeight = keyboard.nextDouble();
-
-            while (musicianWeight >= MAX_WEIGHT){
-                System.out.println("ERROR: Out of range, try again   : ");
-                musicianWeight = keyboard.nextDouble();
-            }
-
-            if (musicians[rowIndex][position - 1] != 0){
+            if (musicians[rowIndex][position - 1] == 0){
                 System.out.println("ERROR: That position is vacant.");
             } else {
-                musicians[rowIndex][position - 1] = musicianWeight;
+                musicians[rowIndex][position - 1] = 0;
                 System.out.println("******** Musician removed.");
             }
-            System.out.println("******* Musician added.");
+
         }// END OF REMOVE MUSICIAN METHOD
 
         private static void printAssignmentOfPositions(){
-            double totalRowWeight = 0;
-            int totalMusicians = 0 ;
             double weight;
-            double averageWeight;
+
             for (int i = 0; i < userRows; i++) {
+                double totalRowWeight = 0;
+                int totalMusicians = 0;
                 System.out.print((char) ('A' + i )+ ":");
                 for (int j = 0; j < numPositions[i]; j++) {
                     weight = musicians[i][j];
                     System.out.printf("%5.1f ", weight);
-                    totalRowWeight = totalRowWeight + weight;
+                    totalRowWeight += weight;
                     if (weight != 0) {
-                        totalRowWeight += weight;
                         totalMusicians++;
                     }
                 }
-                averageWeight = totalMusicians == 0 ? 0 : totalRowWeight / totalMusicians;
-                System.out.printf("  [  %5.1f,  %6.1f]\n", totalRowWeight, averageWeight);
+                double averageWeight = totalMusicians == 0 ? 0 : totalRowWeight / numPositions[i];
+                System.out.printf("         [ %5.1f,  %6.1f]\n", totalRowWeight, averageWeight);
 
           }
 
@@ -159,7 +151,7 @@ public class BandOfHourProject {
             String userInputMenu;
 
                 do {
-                    System.out.println("(A)dd, (R)emove, (P)rint,            e(X)it: ");
+                    System.out.print("(A)dd, (R)emove, (P)rint,            e(X)it: ");
                     userInputMenu = keyboard.next().toUpperCase();
                     switch (userInputMenu) {
                         case "A":
