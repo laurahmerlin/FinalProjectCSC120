@@ -2,6 +2,11 @@ package BandOfHourProject;
 
 import java.util.Scanner;
 
+/**
+ * Band of Hour class designed to help position musicians depending on how many rows, positions per row and weight.
+ * @author lauramerlin
+ * @see BandOfHourProject
+ */
 public class BandOfHourProject {
 
     private static final Scanner keyboard = new Scanner(System.in);
@@ -19,9 +24,14 @@ public class BandOfHourProject {
         getRowsAndPositions();
         menu();
 
-
     }// END OF MAIN METHOD
-     private static void getRowsAndPositions() {
+
+    /**
+     * Method to get rows and positions within each row.
+     * no parameters needed
+     * @see BandOfHourProject
+     */
+    private static void getRowsAndPositions() {
          int userPositions;
 
          System.out.print("Please enter the number of rows     :");
@@ -49,6 +59,11 @@ public class BandOfHourProject {
                 }
         } //END OF GET ROWS AND POSITIONS METHOD
 
+    /**
+     * method to add musician to inputted position and row.
+     * no parameters needed
+     * @see BandOfHourProject
+     */
         private static void addMusician() {
             char rowLetter;
             int rowIndex;
@@ -96,6 +111,11 @@ public class BandOfHourProject {
             }
         }// END OF ADD MUSICIAN METHOD
 
+    /**
+     * method to remove musician from inputted position and row.
+     * no parameters needed
+     * @see BandOfHourProject
+     */
         private static void removeMusician(){
             char rowLetter;
             int rowIndex;
@@ -125,6 +145,11 @@ public class BandOfHourProject {
 
         }// END OF REMOVE MUSICIAN METHOD
 
+    /**
+     * method to print current musicians in rows and positions plus total and average weight.
+     * no parameters needed
+     * @see BandOfHourProject
+     */
         private static void printAssignmentOfPositions(){
             double weight;
 
@@ -147,6 +172,11 @@ public class BandOfHourProject {
 
         }// END OF PRINT ASSIGNMENT OF POSITIONS METHOD
 
+    /**
+     * method to create menu with options: Add, Remove, Print and Exit program.
+     * no parameters needed
+     * @see BandOfHourProject
+     */
         private static void menu(){
             String userInputMenu;
 
