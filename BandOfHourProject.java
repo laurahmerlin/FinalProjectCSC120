@@ -88,27 +88,37 @@ public class BandOfHourProject {
                 System.out.print("ERROR: Out of range, try again   : ");
                 position = keyboard.nextInt();
             }
+            if (musicians[rowIndex][position - 1] != 0){
+                System.out.println("ERROR: There is already a musician there.");
 
-            System.out.print("Please enter weight (" + MIN_WEIGHT + " to " + MAX_WEIGHT + ")   : ");
-            musicianWeight = keyboard.nextDouble();
 
-            while (musicianWeight < MIN_WEIGHT || musicianWeight > MAX_WEIGHT) {
-                System.out.print("ERROR: Out of range, try again   : ");
-                musicianWeight = keyboard.nextDouble();
-            }
-
-            for (int i = 0; i < numPositions[rowIndex]; i++) {
-                totalWeightInRow += musicians[rowIndex][i];
-            }
-
-            if ((totalWeightInRow + musicianWeight) > (MAX_WEIGHT_PER_POSITION * numPositions[rowIndex])) {
-                System.out.print("ERROR: That would exceed the average weight limit.");
-            } else if (musicians[rowIndex][position - 1] != 0){
-                System.out.print("ERROR: There is already a musician there.");
             } else {
-                musicians[rowIndex][position - 1] = musicianWeight;
-                System.out.println("******** Musician added.");
+                System.out.print("Please enter weight (" + MIN_WEIGHT + " to " + MAX_WEIGHT + ")   : ");
+                musicianWeight = keyboard.nextDouble();
+
+                while (musicianWeight < MIN_WEIGHT || musicianWeight > MAX_WEIGHT) {
+                    System.out.print("ERROR: Out of range, try again   : ");
+                    musicianWeight = keyboard.nextDouble();
+                }
+                for (int i = 0; i < numPositions[rowIndex]; i++) {
+                    totalWeightInRow += musicians[rowIndex][i];
+                }
+
+                if ((totalWeightInRow + musicianWeight) > (MAX_WEIGHT_PER_POSITION * numPositions[rowIndex])) {
+                    System.out.println("ERROR: That would exceed the average weight limit.");
+
+                } else {
+                    musicians[rowIndex][position - 1] = musicianWeight;
+                    System.out.println("******** Musician added.");
+                }
+
+
             }
+
+
+
+
+
         }// END OF ADD MUSICIAN METHOD
 
     /**
@@ -133,11 +143,11 @@ public class BandOfHourProject {
             int position = keyboard.nextInt();
 
             while (position < 1 || position > numPositions[rowIndex]){
-                System.out.print("ERROR: Out of range, try again   : ");
+                System.out.println("ERROR: Out of range, try again   : ");
                 position = keyboard.nextInt();
             }
             if (musicians[rowIndex][position - 1] == 0){
-                System.out.print("ERROR: That position is vacant.");
+                System.out.println("ERROR: That position is vacant.");
             } else {
                 musicians[rowIndex][position - 1] = 0;
                 System.out.print("******** Musician removed.");
